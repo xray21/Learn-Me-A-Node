@@ -1,9 +1,9 @@
 var express = require("express");
-var app = express();
 var fs = require("fs");
 var r = require("rethinkdb");
-var conn = null;
 var mustache = require("mustache-express");
+
+var app = express();
 
 /****************/
 /**** ROUTES ****/
@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 app.get("/authors", (req, res) => {
 	console.log("GET Request received at '/authors' endpoint");
 	
-	connectToDB(() => {
+	connectToDB((conn) => {
 		r.table("authors").run(conn, (err, cursor) => {
 			cursor.toArray((err, result) => {
 				handleErr(err);
@@ -36,7 +36,7 @@ app.get("/authors/:id", (req, res) => {
 	
 	id = req.params.id
 	
-	connectToDB(() => {
+	connectToDB((conn) => {
 		r.table("authors")
 		  .get(id)
 		  .run(conn, (err, result) => {
@@ -53,7 +53,7 @@ app.delete("/authors/:id", function(req, res){
 	
 	id = req.params.id
 	
-	connectToDB(() => {
+	connectToDB((conn) => {
 		r.table("authors")
 		  .get(id)
 		  .delete()
@@ -66,30 +66,19 @@ app.delete("/authors/:id", function(req, res){
 	});
 });
 
-/*app.post("/users", function(req, res){
-	console.log("POST Request received at '/users' endpoint");
-	
-	fs.readFile(usersPath, "utf8", function(err, data){
-		users = JSON.parse(data);
-		users["user4"] = user4;
-		
-		console.log(users);
-		
-		res.end( JSON.stringify(users) );
-	});
+app.post("/authors", function(req, res){
+	console.log("POST Request received at '/authors' endpoint");
 });
 
-*/
 
 /**************************/
 /**** HELPER FUNCTIONS ****/
 /**************************/
 function connectToDB(callback){
-	r.connect( {host: 'localhost', port: 28015}, function(err, connection) {
-		if (err) throw err;
-		conn = connection;
+	r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
+		handleErr(err);
 		
-		callback();
+		callback(conn);
 	});
 }
 
