@@ -1,9 +1,16 @@
 var express = require("express");
 var fs = require("fs");
 var r = require("rethinkdb");
-var mustache = require("mustache-express");
+var mustache = require("mustache")
+var mustacheExpress = require("mustache-express");
 
 var app = express();
+
+app.use(express.static("assets"));
+
+app.engine("mustache", mustacheExpress());
+app.set("view engine", "mustache");
+app.set("views", __dirname + "/views");
 
 /****************/
 /**** ROUTES ****/
@@ -25,7 +32,18 @@ app.get("/authors", (req, res) => {
 				handleErr(err);
 				logJSON(result);
 				
-				res.end(JSON.stringify(result, null, 2));
+				var result = { authors: result };
+				
+				getTemplate("authors", (tmpl) => {
+					var pageContent = mustache.render(tmpl, result);
+					 
+					var data = {
+						pageTitle: "Authors",
+						pageContent: pageContent
+					}
+					
+					res.render("mainView", data);
+				});
 			});
 		});
 	});
@@ -48,7 +66,7 @@ app.get("/authors/:id", (req, res) => {
 	});
 });
 
-app.delete("/authors/:id", function(req, res){
+app.delete("/authors/:id", (req, res) => {
 	console.log("DELETE Request received at '/authors/:id' endpoint");
 	
 	id = req.params.id
@@ -66,7 +84,7 @@ app.delete("/authors/:id", function(req, res){
 	});
 });
 
-app.post("/authors", function(req, res){
+app.post("/authors", (req, res) => {
 	console.log("POST Request received at '/authors' endpoint");
 });
 
@@ -75,10 +93,18 @@ app.post("/authors", function(req, res){
 /**** HELPER FUNCTIONS ****/
 /**************************/
 function connectToDB(callback){
-	r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
+	r.connect( {host: 'localhost', port: 28015}, (err, conn) =>	{
 		handleErr(err);
 		
 		callback(conn);
+	});
+}
+
+function getTemplate(templateName, callback){
+	fs.readFile(__dirname + "/views/" + templateName + ".mustache", (err, data) => {
+		handleErr(err);
+		
+		callback(data.toString());
 	});
 }
 

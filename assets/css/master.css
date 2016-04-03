@@ -1,0 +1,212 @@
+/* CSS Document */
+
+/** Master Reset **/
+*		{ font-family:'Open Sans'; font-size:14px; list-style-type:none; margin:0px; padding:0px; text-decoration:none; }
+/**{ margin:0px; padding:0px; }*/
+/*a		{ color:#990000; text-decoration:none; }
+a:hover	{ color:#0033CC; text-decoration:underline; }*/
+
+h1				{ font-size:26px; }
+h2				{ font-size:21px; }
+h3				{ margin:0px; }
+/*body			{ background:url(../images/bg3.png) repeat fixed #000; color:white; }*/
+
+div.ui-sortable-placeholder	{ float:left; height:20px; }
+
+input[type=text],
+	input[type=password]	{ border:1px solid black; margin:0px; padding:2px 0px 2px 3px; width:calc(100% - 6px); }
+select						{ border:1px solid black; margin:0px; padding:0px; width:calc(100%); }
+.stdTA						{ border:1px black solid; height:100px; padding:0px 3px; resize:none; width:calc(100% - 8px);}
+
+.pageBox		{ float:left; width:100%; margin-bottom:10px; }
+
+/* #wrapper		{ width:1000px; margin:0px auto; overflow:hidden; padding-bottom:200px; } */
+#wrapper		{ margin:0px 20px; overflow:hidden; padding-bottom:200px; }
+#subWrapper		{ float:left; width:100%; position:relative; }
+#PageHeader		{ border-bottom:1px solid #FFF; }
+#PageContent	{ float:left; padding:15px; }
+#headerTitle	{ float:left; width:70%; }
+#headerTitle h1	{ font-size:40px; font-weight:normal; }
+.nav			{ float:left; width:100%; }
+.nav ul			{ }
+.nav li			{ display:inline-block; }
+.nav li:not(:last-child)	{ }
+.nav li	a		{ color:#DDD; display:block; padding:7px; }
+.nav li a:hover	{ }
+
+
+#userInfo 		{ float:right; text-align:right; width:15%; }
+#userInfo ul li { display:inline; }
+#userInfo ul li:last-child { padding-left:4px; } 
+#userInfo ul li:not(:last-child) { padding-right:4px; } 
+
+.pageNav			{ float:left; margin:0px 0px 20px 0px; width:100%; }
+
+#ContentHeader		{ }	
+.formControls		{ }
+#Messages			{ color:red; display:none; }
+
+.mainTitle			{ font-size:25px; }
+.numInput 			{ width:40px !important; }
+
+.formElement		{ float:left; margin-bottom:5px; width:100%; }
+.formLabel			{ float:left; text-align:left; width:100%; }
+.formInput			{ width:100%; }
+
+.pageSection	{ float:left; width:100%; margin-bottom:10px; }
+
+.InfoItem	{ float:left; width:100%; }
+.InfoLabel	{ float:left; font-weight:bold; margin-right:4px; }
+.InfoValue	{ float:left;  }
+
+.mCSB_container			{ margin-right:0px !important;}
+.mCustomScrollBox>.mCSB_scrollTools { width:6px !important; }
+
+.clickableLI			{ }
+
+.Hidden				{ }
+.Hidden.dark		{ opacity:.6; }
+.Hidden.absent		{ display:none; }
+
+.Complete				{ color:#777; text-decoration:line-through; }			
+
+.Widget						{ float:left; margin:0px 0px 10px 0px; width:100%; }
+.Widget.Full				{ }
+.Widget.Half				{ }
+.Widget.Third				{ width:32%; }
+.Widget.Small				{ float:left; min-height:150px; max-height:300px; }
+.Widget.Third:not(:nth-of-type(3)){ margin-right:2%; }
+
+.Widget .WidgetHeader		{ color:white; padding:10px 12px; width: calc(100% - 24px); }
+.Widget.Notes .WidgetHeader	{ background-color:#B43030; }
+.Widget.GMA .WidgetHeader	{ background-color:#5086B6; }
+.Widget .WidgetHeader h2	{ font-size:16px;  }
+
+.Widget .WidgetContent		{ float:left; background-color:#999; padding: 10px 12px; width: calc(100% - 24px); }
+
+
+.ListContainer							{ background-color:#222; float:left; margin-bottom:10px; /*max-height:350px;*/ }
+
+@media (max-width:799px){
+	.ListContainer							{ width:50% }
+	.ListContainer:not(.Hidden):not(:nth-of-type(2n))	{ margin-right:10px; width:calc(50% - 10px) }
+	.ListContainer:not(.Hidden):nth-of-type(2n+1)		{ clear:both; }
+}
+@media (min-width:800px) and (max-width:1023px){
+	.ListContainer							{ width:33% }
+	.ListContainer:not(.Hidden):not(:nth-of-type(3n))	{ margin-right:10px; width:calc(33% - 10px) }
+	.ListContainer:not(.Hidden):nth-of-type(3n+1)		{ clear:both; }
+}
+@media (min-width:1024px) and (max-width:1400px){
+	.ListContainer							{ width:25% }
+	.ListContainer:not(.Hidden):not(:nth-of-type(4n))	{ margin-right:10px; width:calc(25% - 10px) }
+	.ListContainer:not(.Hidden):nth-of-type(4n+1)		{ clear:both; }
+}
+
+@media (min-width:1401px){
+	.ListContainer							{ width:20% }
+	.ListContainer:not(.Hidden):not(:nth-of-type(5n))	{ margin-right:10px; width:calc(20% - 10px) }
+	.ListContainer:not(.Hidden):nth-of-type(5n+1)		{ clear:both; }
+}
+
+.ListContainerHeader					{ color:white; padding:5px 5px 5px 8px; }
+.ListContainerTitle						{ display:inline-block; font-size:18px; width:90%; }
+.ListContainerTitle.Handle				{ cursor:move; }
+.ListPropertiesArrow					{ display:inline-block; vertical-align:bottom; }
+.ListProperties							{ display:none; height:20px; margin-top:4px; }
+.ListItems								{ max-height:350px; margin:0px; width:100%; }
+.ListContainerItem						{ background-color:#921010/*#891A1D*/; color:#fff; float:left; overflow:hidden; padding:6px 2%; width:96%; }
+.ItemEntry								{ border-top:1px solid #333; }
+.ListContainerItem:not(:last-child)		{ border-bottom:1px solid #333; }
+.ListContainerItem.clickableLI:hover	{ background-color:#B43030 /*#67080B*/; cursor:hand; cursor:pointer; }
+.ListOrder								{ cursor:move; float:left; width:6%; }
+.NewListItemBox							{ float:left; margin:0px 0px 10px 0px; width:100%; }
+.ListItemDescription					{ float:left; width:100%; }
+.ListItemDescription.View				{ width:100%; }
+.ListItemDescription.Edit				{ width:75%; }
+.ListItemInput							{ width:100%; }
+.ListItemControls						{ float:right; height:20px; }
+.ListControls							{ float:right; }
+
+.Button								{ color:white; font-size:13px; padding:2px 6px; }
+.NButton							{ border:1px solid black; background-color:#B43030; }
+.MButton							{ border:1px solid black; background-color:#5086B6; }
+a.Inline							{ float:left; }
+a.Inline:not(:last-child)			{ margin-right:4px; }
+a.InlineHeader						{ float:left; min-width:120px; padding:3px 6px; text-align:center}
+a.InlineHeader:not(:last-child)		{ margin-right:5px; }
+a.List								{ }
+a.ListBigItem						{ }
+.ImgButton							{ padding:0px; }
+
+.clr	{ clear:both; }
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.mCSB_scrollTools	{ padding-right:5px; }
+
+#MenuControl	{ display:none; }
+
+.mbl			{ display:none !important; }
+
+@media screen and (max-width:1000px){
+	.dsktp		{ display:none; }
+	.mbl		{ display:inherit !important; }
+	
+	#headerTitle	{ width:calc(100% - 160px); padding: 20px 0px 0px 10px; }
+	#headerTitle h1	{ font-size:72px !important; }
+	.mainTitle		{ font-size:60px; }
+
+	#wrapper	{ position:relative; overflow:hidden; width:100%; margin:0px; }
+
+	#LoginWindow			{ height:600px !important; width:100% !important; }
+	#LoginWindow h1			{ font-size:80px; }
+	#LoginWindow table		{ width:calc(100% - 80px) !important; }
+	#LoginWindow label		{ font-size:48px; }
+	#LoginWindow .bigInput	{ font-size:40px; height:100px; }
+	#LoginControls			{ width:300px !important; }
+	#LoginControls input 	{ height:80px !important; font-size:40px; }
+	
+	#MenuControl	{ display:block; float:left; background-color:white; width:150px; }
+	
+	.nav			{ position:fixed; width:600px; z-index:10000000; left:-600px; top:0; height:100%; }
+	.nav .ulwrapper	{ background-color:#555; float:left; height:100%; width:100% }
+	.nav ul			{ background-color:#555; float:left; display:none; width:100%}
+	.nav ul li  	{ display:inherit; border-bottom:1px solid black; }
+	.nav ul li.separator	{ height:5px; background-color:#000; }
+	.nav ul li a	{ font-size:50px !important; padding:15px; }
+	
+	.NoteGroup					{ margin-bottom:40px !important; background-color:#333333; }
+	.NoteGroup h2				{ font-size:48px !important; padding:0px 10px; }
+	.QuickView .InfoElement		{ font-size:44px; }
+	[name='NoteDate']			{ display:none; }
+	.NoteDescription			{ font-size:40px; }
+	.ImgButton img				{ height:40px; width:40px; }
+	
+	.ListContainer			{ width:calc(100% - 20px) !important; margin-bottom:30px; }
+	.ListContainerHeader	{ font-size:50px; }
+	.ListContainerTitle		{ font-size:50px; }
+	.ListContainerItem:not(:last-child)		{ border-bottom:2px solid #333 !important; }
+	.ItemEntry								{ border-top:2px solid #333; padding-top:20px; }
+	.ListItemDescription	{ font-size:38px !important; }
+	.ListItems				{ max-height:inherit !important; }
+	.ListOrder			{ display:none; }
+	.ListItemInput		{ font-size:38px; height:50px; }
+	
+	.formElementGroup	{ width:100% !important; }
+	.formLabel			{ font-size:42px; }
+	.formInput, .formInput label { font-size:42px !important; width:calc(100% - 20px) !important; }
+	.formInput input	{ font-size:38px !important; height:70px; }
+	.formInput [type=checkbox] { height:40px; width:40px; }
+	.Button		{ font-size:36px;  }
+	 a.Inline, a.InlineHeader { padding:10px 22px; }
+}
+
+/*.mCustomScrollbar, .mCSB_container { overflow:visible !important; }
+.mCustomScrollBox					{ overflow-x:visible; }*/
